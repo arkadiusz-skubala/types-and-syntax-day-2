@@ -170,7 +170,7 @@ describe('creating functions with constructors - types and syntax - day 2', () =
     let CarConstructor;
     beforeEach(() => {
         //define the CarConstructor (it should take three parameters - name, model and color)
-        CarConstructor = (/* arguments */) => {
+        CarConstructor = function(/* arguments */){
             /* properties and methods */
         }
     });
