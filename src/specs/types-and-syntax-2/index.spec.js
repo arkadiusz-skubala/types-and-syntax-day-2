@@ -133,19 +133,19 @@ describe('hoisting - types and syntax - day 2', () => {
 
     test('should create undefined before variable initialization', () => {
         log(a, b, c);
-        let a = 1;
-        let b;
-        let c = 3;
+        var a = 1;
+        var b;
+        var c = 3;
         log(a, b, c);
 
         expect(logMemory).toEqual( /* YOUR ANSWER HERE */ );
     });
 
     test('should create variables per function memory frame', () => {
-        let a;
+        var a;
         (() => {
             log(a);
-            let a = 1;
+            var a = 1;
             log(a);
         })();
         log(a);
@@ -156,7 +156,7 @@ describe('hoisting - types and syntax - day 2', () => {
     test('should create undefined before function initialization', () => {
         expect(typeof Add).toEqual( /* YOUR ANSWER HERE */ );
 
-        let Add = function(a, b) {
+        var Add = function(a, b) {
             return a + b;
         }
 
