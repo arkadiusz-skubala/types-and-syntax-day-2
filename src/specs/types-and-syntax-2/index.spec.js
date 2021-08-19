@@ -91,8 +91,8 @@ describe('creating own object with properties and methods - types and syntax - d
         let newCar = Object.create(car);
         /* add properties and methods to the newCar object */
 
-        const spyOnStartClimatronic = jest.spyOn(car, "startClimatronic");
-        const spyOnStopClimatronic = jest.spyOn(car, "stopClimatronic");
+        const spyOnStartClimatronic = jest.spyOn(newCar, "startClimatronic");
+        const spyOnStopClimatronic = jest.spyOn(newCar, "stopClimatronic");
 
         // properties
         expect(newCar.hasOwnProperty("climatronicOn")).toBeTruthy();
