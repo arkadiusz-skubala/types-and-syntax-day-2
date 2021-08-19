@@ -29,7 +29,9 @@ describe('creating own object with properties and methods - types and syntax - d
     beforeEach(() => {
         // define the car object (properties and methods) to pass the following tests
         car = {
-            /* ... */
+            startEngine() {
+                return;
+            }
         };
     })
 
@@ -66,20 +68,20 @@ describe('creating own object with properties and methods - types and syntax - d
     });
 
     test('checking methods logic', () => {
-        jest.spyOn(car, "startEngine").and.callThrough();
-        jest.spyOn(car, "changeColor").and.callThrough();
-        jest.spyOn(car, "stopEngine").and.callThrough();
+        const spyOnStartEngine = jest.spyOn(car, "startEngine");
+        const spyOnChangeColor = jest.spyOn(car, "changeColor");
+        const spyOnStopEngine = jest.spyOn(car, "stopEngine");
 
         car.startEngine();
-        expect(car.startEngine).toHaveBeenCalled();
+        expect(spyOnStartEngine).toHaveBeenCalled();
         expect(car.engineRunning).toBeTruthy();
 
         car.changeColor("orange");
-        expect(car.changeColor).toHaveBeenCalled();
+        expect(spyOnChangeColor).toHaveBeenCalled();
         expect(car.color).toEqual("orange");
 
         car.stopEngine();
-        expect(car.stopEngine).toHaveBeenCalled();
+        expect(spyOnStopEngine).toHaveBeenCalled();
         expect(car.engineRunning).toBeFalsy();
     });
     test('extending an object with new properties', () => {
@@ -191,13 +193,13 @@ describe('creating functions with constructors - types and syntax - day 2', () =
     test('checking methods logic', () => {
         // create car passing the name, model and color to the CarConstructor (using the 'new' operator)
         let car;
-        jest.spyOn(car, "changeColor").and.callThrough();
+        const spyOnChangeColor = jest.spyOn(car, "changeColor");
 
         expect(car.getName()).toEqual( /* YOUR ANSWER HERE */ );
         expect(car.getModel()).toEqual( /* YOUR ANSWER HERE */ );
         expect(car.color).toEqual( /* YOUR ANSWER HERE */ );
         car.changeColor("orange");
-        expect(car.changeColor).toHaveBeenCalled();
+        expect(spyOnChangeColor).toHaveBeenCalled();
         expect(car.color).toEqual( /* YOUR ANSWER HERE */ );
     });
 })
