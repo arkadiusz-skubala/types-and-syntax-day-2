@@ -91,8 +91,8 @@ describe('creating own object with properties and methods - types and syntax - d
         let newCar = Object.create(car);
         /* add properties and methods to the newCar object */
 
-        jest.spyOn(newCar, 'startClimatronic').and.callThrough();
-        jest.spyOn(newCar, 'stopClimatronic').and.callThrough();
+        const spyOnStartClimatronic = jest.spyOn(car, "startClimatronic");
+        const spyOnStopClimatronic = jest.spyOn(car, "stopClimatronic");
 
         // properties
         expect(newCar.hasOwnProperty("climatronicOn")).toBeTruthy();
@@ -113,11 +113,11 @@ describe('creating own object with properties and methods - types and syntax - d
 
         // running methods
         newCar.startClimatronic();
-        expect(newCar.startClimatronic).toHaveBeenCalled();
+        expect(spyOnStartClimatronic).toHaveBeenCalled();
         expect(newCar.climatronicOn).toBeTruthy();
 
         newCar.stopClimatronic();
-        expect(newCar.startClimatronic).toHaveBeenCalled();
+        expect(spyOnStopClimatronic).toHaveBeenCalled();
         expect(newCar.climatronicOn).toBeFalsy();
     });
 })
